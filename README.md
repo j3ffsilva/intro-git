@@ -1,70 +1,72 @@
-## Git and Github Guide
+## Guia Git e Github
 
-###About Git and Github
-#### What is Git?
-Git is a version control system.
+###Sobre o Git e o Github
+#### O que é o Git?
+Git é um sistema de controle de versões.
 
-#### What is a version control system (VCS)?
+#### O que é um sistema de controle de versões (SCV)?
 
-What is “version control”, and why should you care? Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later.
-It allows you to:
-- revert files back to a previous state
-- revert entire projects back to a previous state
-- compare changes over time
-- see who last modified something that might be causing a problem
-- who introduced an issue, and when
-- recover from screwed up or lost files
+O que é "controle de versões" e por que isso é importante? Controle de versão é um sistema que grava alterações ao longo do tempo em arquivos de forma que se possa recuperar essas versões posteriormente.
 
-What if git wasn't used and a bug is discovered?
-- Don't know when the bug was introduced and what code caused it
-- Can't reset code to a previous version
-- Don't know who introduced the bug
-- Can't have different versions of code (production versus not-in-production)
+Um SCV permite que:
+- reverta arquivos a estados anteriores
+- reverta projetos completos a estados anteriores
+- compara alterações ao longo do tempo
+- vê quem introduziu uma issue e quando
+- recupera arquivos danificados ou perdidos
+
+E se o Git não estiver em uso e um bug for descoberto?
+- Não é possível saber quando o bug foi introduzido e que código foi o responsável
+- Não é possível reiniciar o código a uma versão anterior
+- Não é possível saber quem introduziu o bug
+- Não é possível ter diferentes versões do código (ex:, produção versus não-produção)
 
 
-#### What is github?
-Although git can be used to track your own personal files, github is what allows large teams to collaborate on a single project. Github is a web-based Git repository hosting service. It hosts and tracks the files in your projects.
-It provides:
-- access control (who can see what)
-- wikis/documentation/READMEs for projects
-- task management
-- bug tracking
-- feature requests
+#### O que é o GitHub?
+Embora o Git possa ser usado para rastrear seus próprios arquivos, o GitHub é o que permite que times grandes possa colaborar em um único projeto. GitHub é um repositório Git na web. Armazena e rastreia arquivos em seus projetos.
 
-Which makes Github *excellent* for collaboration.  The open-source community especially loves using Github.  So do hackathon teammates, and technical recruiters.
+O GitHub fornece:
+- controle de acesso (quem pode ver o que)
+- wikis/documentação/READMEs para projetos
+- Gerenciamento de tarefas
+- Rastreamento de bugs
+- Requisições de funcionalidades
 
-### Gitting Started (get it?)
+Essas características fazem do GitHub excelente para colaboração. As comunidades de software aberto (SL) amam usar o GitHub. Assim como times de hackathons e recrutadores técnicos.
 
-| Operating System | Download/Install                                                                                                                                                                                                                                                                                                            |
+### Começando com o Git
+
+| Sistema operacional | Download/Instalação                                                                                                                                                                                                                                                                                                            |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| OS X             | Download from [http://git-scm.com/download/mac](http://git-scm.com/download/mac)                                                                                                                                                                                                                                            |
-| Windows          | Download from [http://git-scm.com/download/win](http://git-scm.com/download/win) - Two programs will install: Git BASH and Git GUI. Use Git BASH! Although the GUI can perform almost all the same functions as BASH, it's great to get experience working from the command line. You can use unix/linux commands within BASH. |
-| Linux            | Ubuntu, Debian, and Mint users can run from their terminal: `sudo apt-get install git`. Fedora Users: `sudo yum install git`                                                                                                                                                                            |
+| OS X             | Download em [http://git-scm.com/download/mac](http://git-scm.com/download/mac)                                                                                                                                                                                                                                            |
+| Windows          | Download em [http://git-scm.com/download/win](http://git-scm.com/download/win) -
 
-#### (Global) Config Settings
-  There are some settings (such as your information, what editor you use, aliases, etc) on git that you'll definitely want to configure.
-  Git has two files, `~/.gitconfig` and `~/.gitignore` located in your home directory. `~/.gitconfig` stores settings that you can configure. '~/.gitignore` stores information about what files git should not keep track of. (Maybe you don't want git to track any files with the extension ".catvideo").  You can also make repo-specific .gitignore files (for example, if you don't want to track .class files in a repo).
-  
-  You'll want to set your name, and email (attached to the commits you write):
-  
-  `$ git config --global user.name "John Doe"`
+Dois programas irão instalar: Git Bash e Git GUI. Use o Git Bash! Embora uma GUI pode fazer quase todas as funções que o BASH, é ótimo ganhar familiaridade ao trabalhar da linha de comando. Você pode usar comandos Unix/Linux dentro do Bash. |
+| Linux            | usuários Ubuntu, Debian, e Mint podem rodar de seus terminais:  `sudo apt-get install git`. Usuários Fedora: `sudo yum install git`                                                                                                                                                                            |
 
+#### Configurações (Globais)
+Existem algumas configurações (tais como suas informações, e que editor você usa, aliases etc) Git tem dois arquivos, `~/.gitconfig` e `~/.gitignore` localizada em seu diretório home. `~/.gitconfig` stores settings that you can configure. '~/.gitignore` stores information about what files git should not keep track of. (Maybe you don't want git to track any files with the extension ".catvideo").  You can also make repo-specific .gitignore files (for example, if you don't want to track .class files in a repo).
+
+Você pode configurar seu nome e email (anexada aos commits que você escreve):
+
+ `$ git config --global user.name "John Doe"`
+o git usa:
   `$ git config --global user.email johndoe@example.com`
 
-  If you're unfamiliar with vim, change the default editor git uses:
-  
+  Se você não está familiarizado com vim, altere o editor-padrão que o Git utiliza:
+
   - Mac: `git config --global core.editor open`
   - Windows: `git config --global core.editor notepad`
   - Linux: `git config --global core.editor nano`
 
-  If you want to make your git output be pretty and colorful, here's one way to do it:
-  Open your git config: 
-  
+  Se você quer fazer a saída do git agradável e colorida, aqui vai uma maneira de fazer:
+  Abra seu git config:
+
   - Mac: `open ~/.gitconfig`
   - Windows: `start ~/.gitconfig`
   - Linux: `nano ~/.gitconfig`
-  - Add the following lines:
-  
+  - Adicione as seguintes linhas:
+
 ```
 [color]
 	ui = true
@@ -78,48 +80,51 @@ Which makes Github *excellent* for collaboration.  The open-source community esp
 	old = red
 	new = green
 ```
-  
-As you use git more and more, you might be interested in aliasing commands (generally by making them shorter so you can type less!)  For more examples of ways to customize your git, you can look at an example gitconfig file under `git_resources`.
+
+Quanto mais se utiliza o git mais interessante fica utilizar comandos alias (geralmente ao torná-los mais curtos para que se digite menos!) Para mais exemplos de maneiras de customizar o git, você pode olhar para um exemplo de um arquivo de configuração `git_recursos`.
 
 
-### Git Basics
-#### Basic Unix Commands
-You'll be working within the terminal, or git BASH if you're on Windows, and so it's handy to know some basic unix commands for navigation. Type a command, and then press enter.
--`pwd` tells you the directory (folder) you are currently in
--`ls` shows the files in the current directory
--`cd [FOLDER_NAME]` allows changes the current directory to FOLDER_NAME
--`cd ..` changes back to the parent directory (the folder that the *current* directory is inside of)
+### O Básico do Git
+#### Comandos Unix Básicos
+É sempre útil saber alguns comandos Unix básicos para quem utiliza o terminal. Digite o comando, e então pressione enter.
 
-On Windows you can also right-click on the folder you want to be in and click `git Bash`. This will open git BASH with the current directory already at the folder you want. On Macs, you can type `cd ` and then drag the folder you want to the terminal window and it will fill in the pathname.
+-`pwd` informa o diretório (pasta) corrente
+-`ls` mostra os arquivos no diretório corrente
+-`cd [NOME_DA_PASTA]` faz com que o diretório corrente seja alterado para NOME_DA_PASTA
+-`cd ..` faz com que o diretório corrente seja alterado para o diretório pai (a pasta em que o diretório *corrente* está dentro)
 
-If this is confusing, ask for help! The command line can be daunting for beginners, but it will get easier with practice.
-#### Getting a Git Repository
-  - **Cloning an Existing Repository**
-    - Most of the time in this club and elsewhere you'll be using git to work on projects already on github. Use the following command to clone the project to your computer
-    
-    `git clone https://github.com/dvcoders/intro-git.git`
-    
-    -This creates a new folder with a name matching the repository (Git name for project) name that you cloned from
-    -`cd [REPOSITORY_NAME]` to change your current directory to the newly created folder
-    
-  - **Initializing a repository in an existing directory**
-    - If you have a directory already on your computer that you want to start tracking with git, use `git init` to start tracking that folder with git.
-    
-    
-    The `.git` directory allows git commands to be recognized within its parent directory (where you typed `git init`.)  
-    If you are NOT Inside a git repo, you will get an error when you try to type a git command.
+No Windows, pode-se clicar com o botão direito do mouse na pasta que se deseja entrar e clicar em `git Bash`. Esta ação irá abrir o git BASH com o diretório corrente apontado para a pasta que se quer. No Macs, pode-se digitar `cd ` e então arrastar a pasta que se quer entrar e a janela do terminal irá preencher com o caminho da pasta.
+
+Se achar esses passos confusos, procure ajuda. A linha de comando pode ser assustadora para os novatos, mas fica mais fácil com a prática.
+
+#### Obtendo um repositório Git
+
+  - **Clonando um repositório existente**
+    - A maior parte das vezes neste clube e por aí você irá o git para trabalhar em projetos existentes no GitHub. Use o seguinte comando para clonar o projeto em seu computador.
+
+    `git clone https://github.com/pucsp-open/intro-git.git`
+
+    -Esta ação copia (clona) um repositório git para a máquina local, para uma pasta com o mesmo nome do repositório
+    -`cd [NOME_DO_REPOSITÓRIO]` para mudar o diretório corrente para uma pasta recém criada
+
+  - **Iniciando o repositório em um diretório existente**
+    - Se você já possui um diretório em seu computador que você deseja rastrear com o git, use o comando `git init` para começar a rastrear aquela pasta com o git.
+
+  - O diretório `.git` permite que comandos git possam ser reconhecidos dentro do diretório pai (onde você digitou o `git init`)
+    Se você não estiver dentro de um repositório git, o sistema operacional acusa erros quando se tenta digitar comandos git.
     ```
     $ cd ~
     $ git status
     fatal: Not a git repository (or any of the parent directories): .git
-    ```
+    ``
 
-#### Making and Recording Changes to the Repo
-You tell git what to keep **track** of (does it care if you make changes to it or not?), and then git will tell you if any of your **tracked** files have been **modified**, whether they are **staged** for commit, and what **branch** you are on. The following command gives you all of that information:
+#### Registrar alterações no repositório
+
+Você diz ao git o que registrar (o Git se importa se você fez alterações ou não?), e então o git irá te mostrar se quaisquer um dos arquivos **rastreados** foram **modificados**, se eles estão **staged** para commit, e em que **branch** você está. O seguinte comando fornece todas as informações:
 
 `git status`
 
-If you type this command in your newly cloned, or newly initialized folder, you'll see the following because you haven't made any changes yet:
+Se você digitar este comando em uma pasta recém clonada (ou uma recém inicializada), o sistema irá mostrar as informações a seguir (porque nenhuma mudança foi feita ainda):
 
 ```
 $ git status
@@ -130,7 +135,7 @@ Initial commit
 nothing to commit
 ```
 
-The first line means you are on the **master branch** (which is by default). The second line means you haven't commited any changes yet, and the third line means you haven't made any changes to the files or added any files yet.
+A primeira linha significa que você está no **master branch** (uma tradução em Português é **ramo mestre**) (que é o padrão). A segunda linha significa que não se fez commits de alterações ainda, e a terceira linha significa que você ainda nem fez mudanças aos arquivos nem adicionou arquivos ainda.
 
 So you want to start working on the files in your newly git-tracked folder. To do so, follow these steps:
 
@@ -174,14 +179,14 @@ Untracked files:
 nothing added to commit but untracked files present
 ```
 
-hello.txt is **untracked** by git. The last line means that git does not see any *tracked* changes, but it reminds you that there is an *untracked* file (hello.txt). 
+hello.txt is **untracked** by git. The last line means that git does not see any *tracked* changes, but it reminds you that there is an *untracked* file (hello.txt).
 
 #####3. Add files
 You want to "add" hello.txt, so that it is **tracked** by git. Use:
 
 `git add hello.txt`
 
-If you want to add multiple files, just enter each filename separated by a space like so 
+If you want to add multiple files, just enter each filename separated by a space like so
 
 `git add file1 file2 file3 etc.`
 
@@ -216,7 +221,7 @@ $ git commit -m "Created hello.txt which contains a greeting"
  1 file changed, 1 insertion(+)
  create mode 100644 hello.txt
 ```
- 
+
 Now git is tracking a file called hello.txt, and you have one commit with your initial changes to it.
 
 Congrats, you've made you're first commit. You probably want to publish those changes to Github, which is covered below.
@@ -226,16 +231,16 @@ Congrats, you've made you're first commit. You probably want to publish those ch
 If you type `git status` again, you'll notice we're kind of back to where we started.  That's because we made and now git is tracking the changes between your most recent commit and now.  This is the typical flow of using git:
 
  1.  `git branch [branch name]` and `git checkout [branch name]"`
- 
+
  2.  Create file/make changes to file(s)
- 
+
  3.  `git add <file>`
- 
+
  4.  `git commit -m "changes to <file(s)>"`
 
  5.  Publish those changes (covered below)
 
- 
+
 #### Looking at Changes, Commits, and Undoing Things
 
 If you want to see the commits you've made so far:
@@ -245,9 +250,9 @@ If you want to see the commits you've made so far:
  Fri Jan 23 17:38:42 2015 -0800 025aabe (HEAD, master) Changed text of hello.txt  [Melanie Cebula]
  Fri Jan 23 17:35:13 2015 -0800 f6f7407 Created hello.txt which contains a greeting  [Melanie Cebula]
 ```
- 
+
 If you haven't yet committed your changes, you can look at *what* you changed by performing `$ git diff`.  Go ahead and make some more changes to hello.txt.  In my case, my evil twin sister stole my laptop and furiously typed some things.  I want to know what she changed!!!
- 
+
 ```
  $ git diff
  diff --git i/hello.txt w/hello.txt
@@ -262,19 +267,19 @@ If you haven't yet committed your changes, you can look at *what* you changed by
 ```
 She deleted you (in red) and added a message (in green).  How do we undo this?
 Since this is unstaged, we basically need to **un-modify the modified changes**.
- 
+
 Here's on way to do that (use with caution):
 `$ git checkout -- hello.txt`
- 
+
 However, if you want to **undo something you've already committed (say your last commit)**:
- 
+
 Undo commit with `git reset` (use with caution):
 `$ git reset --soft HEAD~1 `
- 
+
 Note: You can recover from undoing things (see [http://stackoverflow.com/questions/2510276/undoing-git-reset](http://stackoverflow.com/questions/2510276/undoing-git-reset)) but you should be careful in general, because it can get complicated.
- 
+
 Okay cool, so git can be used to keep track of modifications you make to the files that it tracks.
-    
+
 #### Pushing/Pulling Changes
 
 ![](https://illustrated-git.readthedocs.org/en/latest/_images/git-flows.svg)
@@ -357,7 +362,7 @@ Everything from `<<<<<<< HEAD` to `=======` is the code we have on our local mac
 
 Everything from `=======` to `>>>>>>> [commit hash...]` is the code from our remote repo.
 
-Simply delete the half you don't want and clean up all `=======` or `<<<<<<<` markings. 
+Simply delete the half you don't want and clean up all `=======` or `<<<<<<<` markings.
 
 Finally, to resolve this merge conflict we simple add and commit our changes!
 
@@ -406,7 +411,7 @@ For example:  We add a **remote** called `origin` from the git repo `git://git.w
 
 `$ git remote add origin git://git.whatever.com`
 
-**Note:** When you `git clone` a repository from github, git will automatically add the remote branches. 
+**Note:** When you `git clone` a repository from github, git will automatically add the remote branches.
 
 - **List** remotes: `$ git remote -v`
 - **Push** to a remote:  `$ git push (remote) (branch)`
